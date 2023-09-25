@@ -10,7 +10,7 @@ var jump_pressed_time = 0.0
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 		
 func _physics_process(delta):
-		
+
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
@@ -24,6 +24,7 @@ func _physics_process(delta):
 	if Input.is_action_just_released("Jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 		velocity.z=lerp(MIN_SPEED, MAX_SPEED, jump_pressed_time)
+		jump_pressed_time=0;
 		$AnimationPlayer.play("Spin")
 
 	move_and_slide()

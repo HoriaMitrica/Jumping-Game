@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dfctkuvtteqfe"]
+[gd_scene load_steps=9 format=3 uid="uid://dfctkuvtteqfe"]
 
 [ext_resource type="PackedScene" uid="uid://d2jlaayjvpfkr" path="res://Scenes/Platform.tscn" id="1_kx4tm"]
 [ext_resource type="Script" path="res://Scripts/Level.gd" id="1_p8jcs"]
 [ext_resource type="PackedScene" uid="uid://cabthe0o86rql" path="res://Scenes/Player.tscn" id="2_fl2lm"]
 [ext_resource type="PackedScene" uid="uid://bfg87wv0640wn" path="res://Scenes/canvas_layer.tscn" id="2_lml30"]
+[ext_resource type="PackedScene" uid="uid://dwxuehseao28k" path="res://Scenes/Starting_zone.tscn" id="5_jc00i"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_17b3y"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -31,9 +32,8 @@ environment = SubResource("Environment_q0tkj")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000472784, 1.4311, -0.000179708)
 
 [node name="Platform" parent="." instance=ExtResource("1_kx4tm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.997271)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
 
-[node name="Platform2" parent="." instance=ExtResource("1_kx4tm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.32157)
+[node name="StartingZone" parent="." instance=ExtResource("5_jc00i")]
 
 [connection signal="score_changed" from="." to="CanvasLayer" method="_on_level_score_changed"]
