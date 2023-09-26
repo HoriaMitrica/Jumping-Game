@@ -13,14 +13,16 @@ var platform_index=1
 var next_platform_x:int=0
 var next_platform_z:int=5
 
-var min_distance:float=2
+var min_distance:float=3
 var max_distance:float=8
 var direction_change:bool=false
 
 var platform_zone
 var combo_zone 	
+var fall_zone
 var platform_zone_path
 var combo_zone_path 
+var fall_zone_path
 # Called when the node enter`s the scene tree for the first time.
 func _ready():
 	_change_signals("Platform1")
@@ -28,7 +30,9 @@ func _ready():
 func _on_combo_event():
 	Combo_index+=1
 	_increaseScore(Combo_index*2)
-	_instantiate(_get_new_pos(0,5))
+	var x=_random_x()
+	var z=_random_z()
+	_instantiate(_get_new_pos(x,z))
 
 func _on_landed_event():	
 	Combo_index=0
@@ -36,6 +40,10 @@ func _on_landed_event():
 	var x=_random_x()
 	var z=_random_z()
 	_instantiate(_get_new_pos(x,z))
+	
+func _on_fall_event():
+	get_tree().reload_current_scene()
+	pass
 	
 func _instantiate(pos:Vector3):
 	var instance=platform.instantiate()
@@ -68,13 +76,18 @@ func _random_z()->float:
 	#emit_signal("rotate")
 	return randf_range(min_distance, max_distance)
 
-func _change_signals(name:String):	
+func _change_signals(name:String):
 	platform_zone_path=name+"/MeshInstance3D/PlatfformArea"
-	combo_zone_path=name+"/ComboArea"
 	platform_zone = get_node(platform_zone_path)
-	combo_zone = get_node(combo_zone_path)
 	platform_zone.landed_event.connect(_on_landed_event)
+	
+	combo_zone_path=name+"/ComboArea"
+	combo_zone = get_node(combo_zone_path)
 	combo_zone.combo_event.connect(_on_combo_event)
+	
+	fall_zone_path=name+"/FallArea"
+	fall_zone = get_node(fall_zone_path)
+	fall_zone.fall_event.connect(_on_fall_event)
 
 func _process(delta):
 	if platform_index>5:

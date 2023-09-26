@@ -6,7 +6,6 @@ const MAX_SPEED=10.0
 const JUMP_VELOCITY = 4.5
 var rotated:bool=false
 var jump_pressed_time = 0.0
-# Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 		
 func _physics_process(delta):
@@ -30,9 +29,7 @@ func _physics_process(delta):
 		else:
 			velocity.x=lerp(MIN_SPEED, MAX_SPEED, jump_pressed_time)
 			$AnimationPlayer.play_backwards("Spin_2")
-		
 		jump_pressed_time=0;
-
 	move_and_slide()
 
 
