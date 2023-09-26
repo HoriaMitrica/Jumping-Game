@@ -12,7 +12,6 @@ func _physics_process(delta):
 	for body in overlapping_bodies:
 		if body.is_in_group("Player") && Landed==false && Combo==false:
 			_on_player_entered_platform()
-			
 
 func _on_player_entered_platform():
 	Landed=true
