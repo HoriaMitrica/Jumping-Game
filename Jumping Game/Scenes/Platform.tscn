@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://d2jlaayjvpfkr"]
+
+[ext_resource type="Script" path="res://Scripts/LooseArea.gd" id="2_7onba"]
+[ext_resource type="Script" path="res://Scripts/ComboArea.gd" id="2_c2b64"]
+[ext_resource type="Script" path="res://Scripts/PlatformArea3D.gd" id="2_xxxkr"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_kelqb"]
+points = PackedVector3Array(0.926237, 0.25, 0.926237, -0.956116, -0.25, -0.956116, -0.956116, -0.25, 0.956116, 0.956116, -0.25, -0.956116, -0.926237, 0.25, -0.926237, 0.956116, -0.25, 0.956116, -0.926237, 0.25, 0.926237, 0.926237, 0.25, -0.926237)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_etc7c"]
+points = PackedVector3Array(0.926237, 0.25, 0.926237, -0.956116, -0.25, -0.956116, -0.956116, -0.25, 0.956116, 0.956116, -0.25, -0.956116, -0.926237, 0.25, -0.926237, 0.956116, -0.25, 0.956116, -0.926237, 0.25, 0.926237, 0.926237, 0.25, -0.926237)
+
+[sub_resource type="BoxMesh" id="BoxMesh_gswyk"]
+size = Vector3(2, 0.5, 2)
+
+[node name="Platform" type="Node3D"]
+
+[node name="ComboArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0870304, 0)
+script = ExtResource("2_c2b64")
+
+[node name="AreaShape3D" type="CollisionShape3D" parent="ComboArea"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.3, 0)
+shape = SubResource("ConvexPolygonShape3D_kelqb")
+
+[node name="FallArea" type="Area3D" parent="."]
+script = ExtResource("2_7onba")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FallArea"]
+transform = Transform3D(6.31161, 0, 0, 0, 2.24948, 0, 0, 0, 6.42135, 0.0512255, -1.99553, 0)
+shape = SubResource("ConvexPolygonShape3D_etc7c")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_gswyk")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_etc7c")
+
+[node name="PlatfformArea" type="Area3D" parent="MeshInstance3D"]
+script = ExtResource("2_xxxkr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/PlatfformArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
+shape = SubResource("ConvexPolygonShape3D_etc7c")
+
+[connection signal="combo_event" from="ComboArea" to="MeshInstance3D/PlatfformArea" method="_on_combo_area_combo_event"]
+[connection signal="landed_event" from="MeshInstance3D/PlatfformArea" to="ComboArea" method="_on_platfform_area_landed_event"]

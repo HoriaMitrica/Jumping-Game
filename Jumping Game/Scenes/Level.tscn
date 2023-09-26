@@ -1,0 +1,40 @@
+[gd_scene load_steps=9 format=3 uid="uid://dfctkuvtteqfe"]
+
+[ext_resource type="PackedScene" uid="uid://d2jlaayjvpfkr" path="res://Scenes/Platform.tscn" id="1_kx4tm"]
+[ext_resource type="Script" path="res://Scripts/Level.gd" id="1_p8jcs"]
+[ext_resource type="PackedScene" uid="uid://cabthe0o86rql" path="res://Scenes/Player.tscn" id="2_fl2lm"]
+[ext_resource type="PackedScene" uid="uid://bfg87wv0640wn" path="res://Scenes/canvas_layer.tscn" id="2_lml30"]
+[ext_resource type="PackedScene" uid="uid://dwxuehseao28k" path="res://Scenes/Starting_zone.tscn" id="5_jc00i"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_17b3y"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_f5o5x"]
+sky_material = SubResource("ProceduralSkyMaterial_17b3y")
+
+[sub_resource type="Environment" id="Environment_q0tkj"]
+background_mode = 2
+sky = SubResource("Sky_f5o5x")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Level" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00233483, -0.0131094, 0.00163138)
+script = ExtResource("1_p8jcs")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_q0tkj")
+
+[node name="CanvasLayer" parent="." instance=ExtResource("2_lml30")]
+
+[node name="Player" parent="." groups=["Player"] instance=ExtResource("2_fl2lm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000472784, 1.4311, -0.000179708)
+
+[node name="Platform1" parent="." instance=ExtResource("1_kx4tm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="StartingZone" parent="." instance=ExtResource("5_jc00i")]
+
+[connection signal="rotate" from="." to="Player" method="_on_level_rotate"]
+[connection signal="score_changed" from="." to="CanvasLayer" method="_on_level_score_changed"]
