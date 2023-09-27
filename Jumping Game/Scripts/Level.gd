@@ -48,6 +48,7 @@ func _on_fall_event():
 func _instantiate(pos:Vector3):
 	var instance=platform.instantiate()
 	instance.position=pos
+	#instance.scale = Vector3(0.5,1,0.5)
 	platform_index+=1
 	instance.name="Platform"+str(platform_index)
 	add_child(instance)

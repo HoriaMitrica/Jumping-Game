@@ -16,7 +16,7 @@ size = Vector3(2, 0.5, 2)
 [node name="Platform" type="Node3D"]
 
 [node name="ComboArea" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0870304, 0)
+transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 0.5, 0, -0.0253754, 0)
 script = ExtResource("2_c2b64")
 
 [node name="AreaShape3D" type="CollisionShape3D" parent="ComboArea"]
@@ -24,6 +24,7 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.3, 0)
 shape = SubResource("ConvexPolygonShape3D_kelqb")
 
 [node name="FallArea" type="Area3D" parent="."]
+transform = Transform3D(6.4251, 0, 0, 0, 1, 0, 0, 0, 5.2386, 0, -3, 0)
 script = ExtResource("2_7onba")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="FallArea"]
