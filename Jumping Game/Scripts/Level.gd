@@ -1,9 +1,11 @@
 extends Node3D
 
+signal settings
 signal score_changed(new_score:int)
 signal rotate
 
 var platform=preload("res://Scenes/Platform.tscn")
+var settings_scene = preload("res://Scenes/settings.tscn")
 var old_platform
 var platform_name:String
 var Score:int=0
@@ -25,8 +27,30 @@ var combo_zone_path
 var fall_zone_path
 # Called when the node enter`s the scene tree for the first time.
 func _ready():
+	$CanvasLayer/GameUI.paused.connect(_on_paused)
+	$CanvasLayer/PauseMenu.unpaused.connect(_on_unpaused)
+	$CanvasLayer/PauseMenu.enter_settings.connect(_on_enter_settings)
+	$CanvasLayer/Settings.back_to_game.connect(_on_back_to_game)
 	_change_signals("Platform1")
-
+	
+func _on_back_to_game():
+	$CanvasLayer/GameUI.visible=true
+	$CanvasLayer/Settings.visible=false
+		
+func _on_enter_settings():
+	emit_signal("settings")
+	$CanvasLayer/Settings.visible=true
+	$CanvasLayer/PauseMenu.visible=false
+	
+	
+func _on_unpaused():
+	$CanvasLayer/PauseMenu.visible=false
+	$CanvasLayer/GameUI.visible=true
+	
+func _on_paused():
+	$CanvasLayer/GameUI.visible=false
+	$CanvasLayer/PauseMenu.visible=true
+	pass
 func _on_combo_event():
 	Combo_index+=1
 	_increaseScore(Combo_index*2)
@@ -74,7 +98,6 @@ func _random_x()->float:
 func _random_z()->float:
 	if direction_change:
 		return 0
-	#emit_signal("rotate")
 	return randf_range(min_distance, max_distance)
 
 func _change_signals(name:String):
@@ -98,5 +121,4 @@ func _process(delta):
 			old_platform.queue_free()
 		print("nodes deleted")
 		platform_index=0
-		
 		

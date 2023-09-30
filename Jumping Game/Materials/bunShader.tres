@@ -1,0 +1,51 @@
+[gd_resource type="VisualShader" load_steps=4 format=3 uid="uid://cerfmalrxcoxw"]
+
+[sub_resource type="VisualShaderNodeColorOp" id="VisualShaderNodeColorOp_utvc6"]
+output_port_for_preview = 0
+
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_6tcv2"]
+parameter_name = "ColorParameter"
+default_value_enabled = true
+default_value = Color(0.890196, 0.207843, 0, 1)
+
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_16c84"]
+parameter_name = "ColorParameter2"
+default_value_enabled = true
+default_value = Color(0.402491, 0.446063, 0.884858, 1)
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
+
+uniform vec4 ColorParameter : source_color = vec4(0.890196, 0.207843, 0.000000, 1.000000);
+uniform vec4 ColorParameter2 : source_color = vec4(0.402491, 0.446063, 0.884858, 1.000000);
+
+
+
+void fragment() {
+// ColorParameter:5
+	vec4 n_out5p0 = ColorParameter;
+
+
+// ColorParameter:6
+	vec4 n_out6p0 = ColorParameter2;
+
+
+// ColorOp:3
+	vec3 n_out3p0 = vec3(1.0) - (vec3(1.0) - vec3(n_out5p0.xyz)) * (vec3(1.0) - vec3(n_out6p0.xyz));
+
+
+// Output:0
+	ALBEDO = n_out3p0;
+
+
+}
+"
+graph_offset = Vector2(-354.098, -21.982)
+nodes/fragment/3/node = SubResource("VisualShaderNodeColorOp_utvc6")
+nodes/fragment/3/position = Vector2(220, 160)
+nodes/fragment/5/node = SubResource("VisualShaderNodeColorParameter_6tcv2")
+nodes/fragment/5/position = Vector2(-120, 80)
+nodes/fragment/6/node = SubResource("VisualShaderNodeColorParameter_16c84")
+nodes/fragment/6/position = Vector2(-120, 300)
+nodes/fragment/connections = PackedInt32Array(3, 0, 0, 0, 5, 0, 3, 0, 6, 0, 3, 1)

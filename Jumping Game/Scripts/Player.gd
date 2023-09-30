@@ -25,10 +25,10 @@ func _physics_process(delta):
 		velocity.y = JUMP_VELOCITY
 		if !rotated:
 			velocity.z=lerp(MIN_SPEED, MAX_SPEED, jump_pressed_time)
-			$AnimationPlayer.play_backwards("Spin")
+			#$AnimationPlayer.play_backwards("Spin")
 		else:
 			velocity.x=lerp(MIN_SPEED, MAX_SPEED, jump_pressed_time)
-			$AnimationPlayer.play_backwards("Spin_2")
+			#$AnimationPlayer.play_backwards("Spin_2")
 		jump_pressed_time=0;
 	move_and_slide()
 
@@ -36,7 +36,7 @@ func _physics_process(delta):
 func _on_level_rotate():
 	rotated=!rotated
 	if rotated:
-		$MeshInstance3D.rotation_degrees.y=90
+		$Boorgy.rotation_degrees.y=270
 	else:
-		$MeshInstance3D.rotation_degrees.y=0
+		$Boorgy.rotation_degrees.y=180
 	pass # Replace with function body.

@@ -17,9 +17,12 @@ config/icon="res://icon.svg"
 
 [display]
 
-window/size/viewport_width=2256
-window/size/viewport_height=1504
-window/size/mode=2
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+
+[filesystem]
+
+import/fbx/enabled=false
 
 [input]
 
