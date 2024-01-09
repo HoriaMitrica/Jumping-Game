@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 
 const MIN_SPEED = 0.1
-const MAX_SPEED=8.0
+const MAX_SPEED=10.0
 const JUMP_VELOCITY = 4.5
 var rotated:bool=false
 var player_ofset_z:float
