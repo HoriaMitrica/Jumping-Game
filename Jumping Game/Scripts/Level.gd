@@ -2,7 +2,7 @@ extends Node3D
 
 signal settings
 signal score_changed(new_score:int)
-signal rotate
+signal rotate()
 
 var platform=preload("res://Scenes/Platform.tscn")
 var settings_scene = preload("res://Scenes/settings.tscn")
@@ -11,7 +11,7 @@ var platform_name:String
 var Score:int=0
 var Combo_index=0
 var platform_index=1
-
+var rotated:int=0
 var next_platform_x:int=0
 var next_platform_z:int=5
 
@@ -77,7 +77,6 @@ func _instantiate(pos:Vector3):
 	instance.name="Platform"+str(platform_index)
 	add_child(instance)
 	_change_signals(instance.name)
-	
 func _increaseScore(added_score:int):
 	Score+=added_score
 	emit_signal("score_changed",Score)

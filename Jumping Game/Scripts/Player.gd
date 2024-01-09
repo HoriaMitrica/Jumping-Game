@@ -5,6 +5,10 @@ const MIN_SPEED = 0.1
 const MAX_SPEED=10.0
 const JUMP_VELOCITY = 4.5
 var rotated:bool=false
+var player_ofset_z:float
+var player_ofset_x:float=0.1
+var needs_centering_z:bool
+var needs_centering_x:bool
 var jump_pressed_time = 0.0
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 		
@@ -33,6 +37,7 @@ func _physics_process(delta):
 	move_and_slide()
 
 
+
 func _on_level_rotate():
 	rotated=!rotated
 	if rotated:
@@ -40,3 +45,4 @@ func _on_level_rotate():
 	else:
 		$Boorgy.rotation_degrees.y=180
 	pass # Replace with function body.
+

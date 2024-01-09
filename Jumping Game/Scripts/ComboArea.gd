@@ -5,6 +5,7 @@ var Combo:bool=false
 var Landed:bool=false
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	print(position.x)
 	pass
 
 func _physics_process(delta):
