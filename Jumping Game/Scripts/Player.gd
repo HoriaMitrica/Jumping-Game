@@ -10,10 +10,18 @@ var player_ofset_x:float=0.1
 var needs_centering_z:bool
 var needs_centering_x:bool
 var jump_pressed_time = 0.0
+var animation_playing = false
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+
+
+
+
+func playAnimation():
+	if not animation_playing:
+		$AnimationPlayer.play("WindUp")
+		animation_playing = true
 		
 func _physics_process(delta):
-
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
@@ -22,10 +30,12 @@ func _physics_process(delta):
 		velocity.x=0
 		
 	if Input.is_action_pressed("Jump"):
+		playAnimation()
 		jump_pressed_time += delta
 		
 	# Handle Jump.
 	if Input.is_action_just_released("Jump") and is_on_floor():
+		animation_playing=false;
 		velocity.y = JUMP_VELOCITY
 		if !rotated:
 			velocity.z=lerp(MIN_SPEED, MAX_SPEED, jump_pressed_time)
@@ -37,7 +47,6 @@ func _physics_process(delta):
 	move_and_slide()
 
 
-
 func _on_level_rotate():
 	rotated=!rotated
 	if rotated:
@@ -45,4 +54,3 @@ func _on_level_rotate():
 	else:
 		$Boorgy.rotation_degrees.y=180
 	pass # Replace with function body.
-

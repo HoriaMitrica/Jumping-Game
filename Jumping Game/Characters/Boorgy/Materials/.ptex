@@ -1,0 +1,125 @@
+{
+	"connections": [
+		{
+			"from": "colorize",
+			"from_port": 0,
+			"to": "Material",
+			"to_port": 0
+		},
+		{
+			"from": "fbm2",
+			"from_port": 0,
+			"to": "colorize",
+			"to_port": 0
+		}
+	],
+	"label": "Graph",
+	"longdesc": "",
+	"name": "@@322",
+	"node_position": {
+		"x": 0,
+		"y": 0
+	},
+	"nodes": [
+		{
+			"export_paths": {
+
+			},
+			"name": "Material",
+			"node_position": {
+				"x": 1,
+				"y": 0
+			},
+			"parameters": {
+				"albedo_color": {
+					"a": 1,
+					"b": 1,
+					"g": 1,
+					"r": 1,
+					"type": "Color"
+				},
+				"ao": 1,
+				"depth_scale": 0.5,
+				"emission_energy": 1,
+				"flags_transparent": true,
+				"metallic": 0,
+				"normal": 1,
+				"roughness": 1,
+				"size": 11,
+				"sss": 1
+			},
+			"seed_int": 0,
+			"type": "material"
+		},
+		{
+			"name": "colorize",
+			"node_position": {
+				"x": -508,
+				"y": -129
+			},
+			"parameters": {
+				"gradient": {
+					"interpolation": 1,
+					"points": [
+						{
+							"a": 1,
+							"b": 0.07451,
+							"g": 0.176471,
+							"pos": 0,
+							"r": 0.431373
+						},
+						{
+							"a": 1,
+							"b": 0.223529,
+							"g": 0.431373,
+							"pos": 1,
+							"r": 0.745098
+						}
+					],
+					"type": "Gradient"
+				}
+			},
+			"seed_int": 0,
+			"type": "colorize"
+		},
+		{
+			"name": "tones_map",
+			"node_position": {
+				"x": -398,
+				"y": 286
+			},
+			"parameters": {
+				"in_max": 1,
+				"in_min": 0,
+				"out_max": 1,
+				"out_min": 0
+			},
+			"seed_int": 0,
+			"type": "tones_map"
+		},
+		{
+			"name": "fbm2",
+			"node_position": {
+				"x": -654,
+				"y": 107
+			},
+			"parameters": {
+				"folds": 0,
+				"iterations": 5,
+				"noise": 0,
+				"offset": 0,
+				"persistence": 0.5,
+				"scale_x": 9,
+				"scale_y": 9
+			},
+			"seed_int": 0,
+			"type": "fbm2"
+		}
+	],
+	"parameters": {
+
+	},
+	"seed_int": 0,
+	"shortdesc": "",
+	"type": "graph"
+}

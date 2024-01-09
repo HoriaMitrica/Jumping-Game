@@ -1,8 +1,0 @@
-[gd_resource type="StandardMaterial3D" format=3 uid="uid://kdyqeua685u1"]
-
-[resource]
-resource_name = "Eyes"
-cull_mode = 2
-vertex_color_use_as_albedo = true
-albedo_color = Color(0.113326, 0.113326, 0.113326, 1)
-roughness = 0.3

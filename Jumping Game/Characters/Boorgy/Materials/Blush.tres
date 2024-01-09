@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cos57y6vtwkdi"]
+
+[resource]
+resource_name = "Blush"
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.906332, 0.727009, 0.699446, 1)
+roughness = 0.5
