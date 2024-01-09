@@ -3,6 +3,8 @@ extends Node3D
 signal settings
 signal score_changed(new_score:int)
 signal rotate()
+signal landed()
+signal center_offset(amount:int,forward:bool)
 
 var platform=preload("res://Scenes/Platform.tscn")
 var settings_scene = preload("res://Scenes/settings.tscn")
@@ -53,13 +55,23 @@ func _on_paused():
 	pass
 func _on_combo_event():
 	Combo_index+=1
+	emit_signal("landed")
+	print("next_platform_x: ",next_platform_x)
+	print("next_platform_z: ",next_platform_z)
+	print("player x: ",$Player.position.x)
+	print("player z: ",$Player.position.z)
 	_increaseScore(Combo_index*2)
 	var x=_random_x()
 	var z=_random_z()
 	_instantiate(_get_new_pos(x,z))
 
-func _on_landed_event():	
+func _on_landed_event():
 	Combo_index=0
+	emit_signal("landed")
+	print("platform: ",next_platform_x)
+	print("platform: ",next_platform_z)
+	print("player x: ",$Player.position.x)
+	print("player z: ",$Player.position.z)
 	_increaseScore(1)
 	var x=_random_x()
 	var z=_random_z()
@@ -72,11 +84,17 @@ func _on_fall_event():
 func _instantiate(pos:Vector3):
 	var instance=platform.instantiate()
 	instance.position=pos
+	if(direction_change):
+		emit_signal("center_offset",pos.z-$Player.position.z,!direction_change)
+	else:
+		emit_signal("center_offset",pos.x-$Player.position.x,!direction_change)
+	
 	#instance.scale = Vector3(0.5,1,0.5)
 	platform_index+=1
 	instance.name="Platform"+str(platform_index)
 	add_child(instance)
 	_change_signals(instance.name)
+	
 func _increaseScore(added_score:int):
 	Score+=added_score
 	emit_signal("score_changed",Score)
@@ -113,8 +131,8 @@ func _change_signals(name:String):
 	fall_zone.fall_event.connect(_on_fall_event)
 
 func _process(delta):
-	if platform_index>5:
-		for i in range(1,4):
+	if platform_index>10:
+		for i in range(1,9):
 			platform_name="Platform"+str(i)
 			old_platform=get_node(platform_name)
 			old_platform.queue_free()

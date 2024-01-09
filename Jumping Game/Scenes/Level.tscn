@@ -22,7 +22,7 @@ tonemap_mode = 2
 glow_enabled = true
 
 [node name="Level" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00233483, -0.0131094, 0.00163138)
+transform = Transform3D(0.990723, 0, 0, 0, 0.990723, 0, 0, 0, 0.990723, -0.00233483, -0.0131094, 0.00163138)
 script = ExtResource("1_p8jcs")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -47,6 +47,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
 
 [node name="StartingZone" parent="." instance=ExtResource("5_jc00i")]
 
+[connection signal="center_offset" from="." to="Player" method="_on_level_center_offset"]
+[connection signal="landed" from="." to="Player" method="_on_level_landed"]
 [connection signal="rotate" from="." to="Player" method="_on_level_rotate"]
 [connection signal="score_changed" from="." to="CanvasLayer/GameUI" method="_on_level_score_changed"]
 [connection signal="settings" from="." to="CanvasLayer/Settings" method="_on_level_settings"]
