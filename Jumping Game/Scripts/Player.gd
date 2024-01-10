@@ -1,6 +1,5 @@
 extends CharacterBody3D
 
-
 const MIN_SPEED = 0.1
 const MAX_SPEED=10.0
 const JUMP_VELOCITY = 4.5
@@ -15,6 +14,7 @@ var needs_centering_x:bool
 var jump_pressed_time = 0.0
 var animation_playing = false
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+const AnimationEnum = preload("res://Scripts/AnimationEnum.gd")
 
 func playAnimation(animation_name:String):
 	if not animation_playing:
@@ -36,7 +36,7 @@ func _physics_process(delta):
 	# Handle Jump.
 	if Input.is_action_just_released("Jump") and is_on_floor():
 		animation_playing=false;
-		playAnimation("NormalJump_2")
+		playAnimation(AnimationEnum.getRandomAnimationPrefix())
 		velocity.y = JUMP_VELOCITY
 		if !rotated:
 			
