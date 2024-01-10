@@ -36,19 +36,21 @@ func _physics_process(delta):
 	# Handle Jump.
 	if Input.is_action_just_released("Jump") and is_on_floor():
 		animation_playing=false;
-		playAnimation("Jump")
+		playAnimation("NormalJump_2")
 		velocity.y = JUMP_VELOCITY
 		if !rotated:
+			
 			velocity.z=lerp(MIN_SPEED, MAX_SPEED, jump_pressed_time)
 			velocity.x += center_offset_x * offset_correction_speed;
 		else:
 			velocity.x=lerp(MIN_SPEED, MAX_SPEED, jump_pressed_time)
 			velocity.z += center_offset_z * offset_correction_speed;
+
 		jump_pressed_time=0;
 	move_and_slide()
 
 func _on_level_landed():
-	$AnimationPlayer.play("WindDown")
+	$AnimationPlayer.play("WindDown_2")
 	animation_playing=false;
 
 func _on_level_rotate():

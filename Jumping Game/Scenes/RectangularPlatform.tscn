@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://dgf7oa027wklt"]
+
+[ext_resource type="PackedScene" uid="uid://d2jlaayjvpfkr" path="res://Scenes/Platform.tscn" id="1_qddny"]
+
+[node name="RectangularPlatform" instance=ExtResource("1_qddny")]

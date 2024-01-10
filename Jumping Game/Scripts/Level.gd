@@ -84,6 +84,7 @@ func _on_fall_event():
 func _instantiate(pos:Vector3):
 	var instance=platform.instantiate()
 	instance.position=pos
+	instance.rotation_degrees.y=randi_range(0,90)
 	if(direction_change):
 		emit_signal("center_offset",pos.z-$Player.position.z,!direction_change)
 	else:
