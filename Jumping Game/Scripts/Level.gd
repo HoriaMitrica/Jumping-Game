@@ -8,6 +8,7 @@ signal center_offset(amount:int,forward:bool)
 
 var platform=preload("res://Scenes/Platform.tscn")
 var settings_scene = preload("res://Scenes/settings.tscn")
+var materialChooser=preload("res://Scripts/MaterialResource.gd")
 var old_platform
 var platform_name:String
 var Score:int=0
@@ -17,8 +18,8 @@ var rotated:int=0
 var next_platform_x:int=0
 var next_platform_z:int=5
 
-var min_distance:float=3
-var max_distance:float=8
+var min_distance:float=4
+var max_distance:float=9
 var direction_change:bool=false
 
 var platform_zone
@@ -119,7 +120,9 @@ func _random_z()->float:
 	return randf_range(min_distance, max_distance)
 
 func _change_signals(name:String):
-	platform_zone_path=name+"/MeshInstance3D/PlatfformArea"
+	var mesh=get_node(name+"/FoodTray")
+	mesh.material_override=materialChooser.getRandomMaterial()
+	platform_zone_path=name+"/FoodTray/PlatfformArea"
 	platform_zone = get_node(platform_zone_path)
 	platform_zone.landed_event.connect(_on_landed_event)
 	
