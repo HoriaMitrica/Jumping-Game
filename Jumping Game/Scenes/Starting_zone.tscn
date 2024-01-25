@@ -1,20 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://dwxuehseao28k"]
+[gd_scene load_steps=4 format=3 uid="uid://dwxuehseao28k"]
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_x4pe0"]
-top_radius = 1.0
-bottom_radius = 1.0
-height = 0.5
+[ext_resource type="PackedScene" uid="uid://cvxs5xp17i2rl" path="res://Meshes/DinerBar/DinerBar.glb" id="1_6uo34"]
+[ext_resource type="PackedScene" uid="uid://st7xel5tmp65" path="res://Meshes/BarStool/BarStool.glb" id="2_kpj1v"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_1u8b2"]
 points = PackedVector3Array(0.289222, 0.25, 0.897224, -0.179131, -0.25, -0.956116, -0.173533, 0.25, -0.926237, -0.92598, -0.25, 0.298739, 0.956116, -0.25, 0.179131, 0.810367, 0.25, -0.491769, -0.926237, 0.25, -0.173533, 0.179131, -0.25, 0.956116, -0.578808, 0.25, 0.752522, 0.609039, -0.224454, -0.791827, -0.776797, -0.25, -0.597479, 0.810367, 0.25, 0.491769, -0.388211, -0.25, 0.896218, 0.597479, -0.25, 0.77661, 0.289222, 0.25, -0.897224, -0.578808, 0.25, -0.752522, 0.896218, -0.25, -0.388211, 0.926237, 0.25, -0.173533, -0.868211, 0.25, 0.376261, -0.173533, 0.25, 0.926237, -0.776797, -0.25, 0.597479, -0.956116, -0.25, -0.179131, 0.179131, -0.25, -0.956116, -0.50782, -0.25, -0.836508, -0.810367, 0.25, -0.49195, 0.836508, -0.25, 0.507632, 0.578808, 0.25, 0.752341, 0.926237, 0.25, 0.173533, 0.578808, 0.25, -0.752341, -0.926237, 0.25, 0.173533, 0.956116, -0.25, -0.179131, -0.179131, -0.25, 0.956116)
 
 [node name="StartingZone" type="Node3D"]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-lod_bias = 0.001
-mesh = SubResource("CylinderMesh_x4pe0")
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1.16667, -2.79369e-05, 3.90543e-12, -2.79052e-05, 1.164, 4.28258e-10, 3.89822e-12, 4.27974e-10, 1.1676, 0.439068, 0.317134, 0.195762)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_1u8b2")
+
+[node name="DinerBar" parent="." instance=ExtResource("1_6uo34")]
+transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, -1.61499, -2.4772, -2.13881)
+
+[node name="BarStool2" parent="." instance=ExtResource("2_kpj1v")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 20.826, -2.57023, 10.8195)
+
+[node name="BarStool4" parent="." instance=ExtResource("2_kpj1v")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 16.3236, -2.57023, 10.8195)

@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=3 uid="uid://cnvh1l1bjpkok"]
+
+[ext_resource type="Texture2D" uid="uid://cs6mxd66tl1p6" path="res://Meshes/Floor/Floor_Floor_BaseColor-Floor_Alpha.png" id="1_lnnuo"]
+[ext_resource type="Texture2D" uid="uid://blbm37rtptt0p" path="res://Meshes/Floor/Floor_Floor_Emission.png" id="2_dhc2f"]
+[ext_resource type="Texture2D" uid="uid://bq00truelwl7n" path="res://Meshes/Floor/Floor_Floor_Metallic-Floor_Roughness.png" id="3_asxu5"]
+[ext_resource type="Texture2D" uid="uid://bs2ybdgtcom1w" path="res://Meshes/Floor/Floor_Floor_Normal.png" id="4_kdpeh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ayh24"]
+resource_name = "Floor"
+albedo_texture = ExtResource("1_lnnuo")
+metallic = 1.0
+metallic_texture = ExtResource("3_asxu5")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("3_asxu5")
+roughness_texture_channel = 1
+emission_enabled = true
+emission_texture = ExtResource("2_dhc2f")
+normal_enabled = true
+normal_texture = ExtResource("4_kdpeh")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_2axfg"]
+_surfaces = [{
+"aabb": AABB(-45.4914, -45.4914, -9.53674e-07, 90.9828, 90.9828, 1e-05),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray(3, 0, 1, 0, 0, 0, 1, 0, 3, 0, 2, 0),
+"name": "Floor",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 255, 255, 255, 255, 211, 48, 0, 0, 0, 0, 255, 255, 211, 48, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_38rwb"]
+resource_name = "Floor_Floor"
+_surfaces = [{
+"aabb": AABB(-45.4914, -45.4914, -9.53674e-07, 90.9828, 90.9828, 1e-05),
+"attribute_data": PackedByteArray(204, 255, 50, 0, 50, 0, 50, 0, 50, 0, 204, 255, 204, 255, 204, 255),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray(3, 0, 1, 0, 0, 0, 1, 0, 3, 0, 2, 0),
+"material": SubResource("StandardMaterial3D_ayh24"),
+"name": "Floor",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0, 255, 255, 255, 255, 255, 255, 211, 48, 255, 255, 0, 0, 255, 255, 211, 48, 255, 255, 255, 127, 255, 127, 255, 127, 255, 127, 255, 127, 255, 127, 255, 127, 255, 127)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_2axfg")
+
+[node name="Floor" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, -4.3318e-08, 1.01628, 0, -0.991, -4.4423e-08, 0, 0, 0)
+mesh = SubResource("ArrayMesh_38rwb")
+skeleton = NodePath("")

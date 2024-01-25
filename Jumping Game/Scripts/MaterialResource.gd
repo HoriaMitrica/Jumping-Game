@@ -1,11 +1,11 @@
 extends GDScript
 
 const materials = [
-	preload("res://Materials/FoodTray/FoodTrayBlue.tres"),
-	preload("res://Materials/FoodTray/FoodTrayGreen.tres"),
-	preload("res://Materials/FoodTray/FoodTrayOrange.tres"),
-	preload("res://Materials/FoodTray/FoodTrayPurple.tres"),
-	preload("res://Materials/FoodTray/FoodTrayRed.tres"),
+	preload("res://Characters/Extras/TrayMaterials/FoodTray/FoodTrayBlue.tres"),
+	preload("res://Characters/Extras/TrayMaterials/FoodTray/FoodTrayGreen.tres"),
+	preload("res://Characters/Extras/TrayMaterials/FoodTray/FoodTrayOrange.tres"),
+	preload("res://Characters/Extras/TrayMaterials/FoodTray/FoodTrayPurple.tres"),
+	preload("res://Characters/Extras/TrayMaterials/FoodTray/FoodTrayRed.tres"),
 	# Add more materials as needed
 ]
 

@@ -1,7 +1,8 @@
 extends CharacterBody3D
 
-const MIN_SPEED = 0.1
-const MAX_SPEED=10.0
+const MIN_SPEED = 1.0
+const MAX_SPEED=12.0
+@onready var progressBar=$TwistPivot/PitchPivot/Camera3D/ProgressBar
 const JUMP_VELOCITY = 4.5
 var rotated:bool=false
 var player_ofset_z:float
@@ -22,7 +23,8 @@ func playAnimation(animation_name:String):
 		animation_playing = true
 		
 func _physics_process(delta):
-	# Add the gravity.
+	
+	progressBar.value=clamp(lerp(MIN_SPEED, MAX_SPEED, jump_pressed_time),0,12)
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 	if is_on_floor():
@@ -41,9 +43,11 @@ func _physics_process(delta):
 		if !rotated:
 			
 			velocity.z=lerp(MIN_SPEED, MAX_SPEED, jump_pressed_time)
+			print("velocity: "+str(velocity.z))
 			velocity.x += center_offset_x * offset_correction_speed;
 		else:
 			velocity.x=lerp(MIN_SPEED, MAX_SPEED, jump_pressed_time)
+			print("velocity: "+str(velocity.x))
 			velocity.z += center_offset_z * offset_correction_speed;
 
 		jump_pressed_time=0;

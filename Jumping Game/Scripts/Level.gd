@@ -21,7 +21,6 @@ var next_platform_z:int=5
 var min_distance:float=4
 var max_distance:float=9
 var direction_change:bool=false
-
 var platform_zone
 var combo_zone 	
 var fall_zone
@@ -30,6 +29,7 @@ var combo_zone_path
 var fall_zone_path
 # Called when the node enter`s the scene tree for the first time.
 func _ready():
+	
 	$CanvasLayer/GameUI.paused.connect(_on_paused)
 	$CanvasLayer/PauseMenu.unpaused.connect(_on_unpaused)
 	$CanvasLayer/PauseMenu.enter_settings.connect(_on_enter_settings)
@@ -64,6 +64,9 @@ func _on_combo_event():
 	_increaseScore(Combo_index*2)
 	var x=_random_x()
 	var z=_random_z()
+	$ComboText/SubViewport._change_text(Combo_index)
+	$ComboText.position=$Player.position
+	$ComboText.position.y+=2
 	_instantiate(_get_new_pos(x,z))
 
 func _on_landed_event():
