@@ -11,14 +11,14 @@ config_version=5
 [application]
 
 config/name="Jumping Game"
-run/main_scene="res://Scenes/Level.tscn"
+run/main_scene="res://Scenes/main_screen.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
 
 [display]
 
-window/size/viewport_width=1920
-window/size/viewport_height=1080
+window/size/viewport_width=1080
+window/size/viewport_height=1920
 
 [filesystem]
 

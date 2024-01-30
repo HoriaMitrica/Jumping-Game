@@ -41,7 +41,6 @@ func _physics_process(delta):
 		playAnimation(AnimationEnum.getRandomAnimationPrefix())
 		velocity.y = JUMP_VELOCITY
 		if !rotated:
-			
 			velocity.z=lerp(MIN_SPEED, MAX_SPEED, jump_pressed_time)
 			print("velocity: "+str(velocity.z))
 			velocity.x += center_offset_x * offset_correction_speed;
