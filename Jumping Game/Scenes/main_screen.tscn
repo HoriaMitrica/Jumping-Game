@@ -1,9 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://cqdycasqi8y8v"]
+[gd_scene load_steps=12 format=3 uid="uid://drdpdufrfo5c7"]
 
 [ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="1_t8phu"]
 [ext_resource type="Texture2D" uid="uid://bhgyp4t6l6jx1" path="res://UI Textures/background.png" id="2_brakp"]
 [ext_resource type="FontFile" uid="uid://dbt7t2auf2v2o" path="res://Characters/Extras/TrayMaterials/Fonts/Insaniburger-0OZ9.ttf" id="2_l6qm5"]
-[ext_resource type="Theme" uid="uid://b4ph2anee34sw" path="res://UI/ButtonTheme1.tres" id="2_vy57y"]
+[ext_resource type="Theme" uid="uid://cekdep6cyhmu4" path="res://UI/ButtonTheme1.tres" id="2_vy57y"]
 [ext_resource type="Texture2D" uid="uid://bwvq48bbrohtq" path="res://UI Textures/top_bun_smaller.png" id="4_shmxq"]
 [ext_resource type="Texture2D" uid="uid://3l3c5twohq3a" path="res://UI Textures/burger_mijloc_small.png" id="6_nxe1q"]
 [ext_resource type="Texture2D" uid="uid://rd213u0tnbdy" path="res://UI Textures/low_bun_smalll.png" id="7_3wj32"]

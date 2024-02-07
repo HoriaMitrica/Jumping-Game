@@ -1,14 +1,15 @@
-[gd_scene load_steps=15 format=3 uid="uid://dfctkuvtteqfe"]
+[gd_scene load_steps=16 format=3 uid="uid://dfctkuvtteqfe"]
 
 [ext_resource type="PackedScene" uid="uid://d2jlaayjvpfkr" path="res://Scenes/Platform.tscn" id="1_kx4tm"]
 [ext_resource type="Script" path="res://Scripts/Level.gd" id="1_p8jcs"]
 [ext_resource type="PackedScene" uid="uid://bjpd6kdpv20cj" path="res://Scenes/settings.tscn" id="2_570v4"]
 [ext_resource type="PackedScene" uid="uid://cabthe0o86rql" path="res://Scenes/Player.tscn" id="2_fl2lm"]
-[ext_resource type="PackedScene" uid="uid://ck4rtojhhnp4d" path="res://Scenes/pause_menu.tscn" id="2_lp210"]
+[ext_resource type="PackedScene" uid="uid://decj2sortepd3" path="res://Scenes/pause_menu.tscn" id="2_lp210"]
 [ext_resource type="AudioStream" uid="uid://ns6oj2bpu5ie" path="res://Music/Background_Boorgy_Music.mp3" id="2_nrf30"]
+[ext_resource type="PackedScene" uid="uid://co0lsf7dapakt" path="res://Scenes/LooseScreen.tscn" id="3_mjjjo"]
 [ext_resource type="PackedScene" uid="uid://dwxuehseao28k" path="res://Scenes/Starting_zone.tscn" id="5_jc00i"]
-[ext_resource type="PackedScene" uid="uid://bb2b8eh7yyeqa" path="res://Scenes/game_ui.tscn" id="6_4x7ln"]
-[ext_resource type="PackedScene" uid="uid://d1voucyms4n16" path="res://Scenes/combo_text.tscn" id="8_rpmpu"]
+[ext_resource type="PackedScene" uid="uid://cpv3qmxcnwie6" path="res://Scenes/game_ui.tscn" id="6_4x7ln"]
+[ext_resource type="PackedScene" uid="uid://bfpb1ym7l8spj" path="res://Scenes/combo_text.tscn" id="8_rpmpu"]
 [ext_resource type="PackedScene" uid="uid://bhrkxa72wik0h" path="res://Meshes/Floor/FloorTile.tscn" id="10_hyata"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mwnnw"]
@@ -40,6 +41,9 @@ autoplay = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+[node name="LooseScreen" parent="CanvasLayer" instance=ExtResource("3_mjjjo")]
+visible = false
+
 [node name="Settings" parent="CanvasLayer" instance=ExtResource("2_570v4")]
 visible = false
 
@@ -59,14 +63,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.506453, -0.0150734, 0.0321722)
 
 [node name="ComboText" parent="." instance=ExtResource("8_rpmpu")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -3.72342, 0.0132322, 0.0377737)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -5.28474, -11.8791, 4.45314)
 texture = SubResource("ViewportTexture_i2ewj")
 
 [node name="FloorTile" parent="." instance=ExtResource("10_hyata")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.62671, -2.52929, 98.1175)
 
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
 [connection signal="center_offset" from="." to="Player" method="_on_level_center_offset"]
 [connection signal="landed" from="." to="Player" method="_on_level_landed"]
+[connection signal="loose" from="." to="CanvasLayer/GameUI" method="_on_save_game"]
 [connection signal="rotate" from="." to="Player" method="_on_level_rotate"]
 [connection signal="score_changed" from="." to="CanvasLayer/GameUI" method="_on_level_score_changed"]
 [connection signal="settings" from="." to="CanvasLayer/Settings" method="_on_level_settings"]
+[connection signal="start" from="." to="CanvasLayer/GameUI" method="_on_load_game"]
+[connection signal="start" from="." to="CanvasLayer/GameUI" method="_on_level_start"]

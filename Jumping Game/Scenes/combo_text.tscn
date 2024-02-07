@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://d1voucyms4n16"]
+[gd_scene load_steps=5 format=3 uid="uid://bfpb1ym7l8spj"]
 
 [ext_resource type="Script" path="res://Scenes/SubViewport.gd" id="1_nr1n7"]
 [ext_resource type="FontFile" uid="uid://dbt7t2auf2v2o" path="res://Characters/Extras/TrayMaterials/Fonts/Insaniburger-0OZ9.ttf" id="2_a1pee"]
@@ -9,19 +9,21 @@ viewport_path = NodePath("SubViewport")
 [sub_resource type="LabelSettings" id="LabelSettings_dmtth"]
 line_spacing = 4.0
 font = ExtResource("2_a1pee")
-font_size = 20
+font_size = 50
+font_color = Color(0, 1, 1, 1)
 outline_size = 6
 outline_color = Color(0, 0, 0.666667, 1)
 shadow_size = 8
 shadow_color = Color(0, 0, 0, 1)
 
 [node name="ComboText" type="Sprite3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0218649, 0, 0)
 billboard = 1
 texture = SubResource("ViewportTexture_5obyw")
 
 [node name="SubViewport" type="SubViewport" parent="."]
 transparent_bg = true
-size = Vector2i(96, 64)
+size = Vector2i(256, 128)
 script = ExtResource("1_nr1n7")
 
 [node name="Label" type="Label" parent="SubViewport"]

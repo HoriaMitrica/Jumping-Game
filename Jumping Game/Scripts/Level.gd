@@ -2,6 +2,8 @@ extends Node3D
 
 signal settings
 signal score_changed(new_score:int)
+signal loose(new_score:int)
+signal start
 signal rotate()
 signal landed()
 signal center_offset(amount:int,forward:bool)
@@ -29,7 +31,9 @@ var combo_zone_path
 var fall_zone_path
 # Called when the node enter`s the scene tree for the first time.
 func _ready():
-	
+	emit_signal("start")
+	$CanvasLayer/LooseScreen.try_again.connect(_on_try_again)
+	$CanvasLayer/LooseScreen.quit.connect(_on_quit)
 	$CanvasLayer/GameUI.paused.connect(_on_paused)
 	$CanvasLayer/PauseMenu.unpaused.connect(_on_unpaused)
 	$CanvasLayer/PauseMenu.enter_settings.connect(_on_enter_settings)
@@ -53,7 +57,16 @@ func _on_unpaused():
 func _on_paused():
 	$CanvasLayer/GameUI.visible=false
 	$CanvasLayer/PauseMenu.visible=true
-	pass
+	
+func _on_try_again():
+	$CanvasLayer/GameUI.visible=true
+	$CanvasLayer/LooseScreen.visible=false
+	get_tree().paused=false
+	get_tree().reload_current_scene()
+func _on_quit():
+	get_tree().paused=false
+	get_tree().change_scene_to_file("res://Scenes/main_screen.tscn")
+	
 func _on_combo_event():
 	Combo_index+=1
 	emit_signal("landed")
@@ -82,7 +95,10 @@ func _on_landed_event():
 	_instantiate(_get_new_pos(x,z))
 	
 func _on_fall_event():
-	get_tree().reload_current_scene()
+	emit_signal("loose",Score)
+	get_tree().paused=true
+	$CanvasLayer/GameUI.visible=false
+	$CanvasLayer/LooseScreen.visible=true
 	pass
 	
 func _instantiate(pos:Vector3):

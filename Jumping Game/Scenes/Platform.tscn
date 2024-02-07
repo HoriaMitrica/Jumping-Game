@@ -1,10 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://d2jlaayjvpfkr"]
+[gd_scene load_steps=8 format=3 uid="uid://d2jlaayjvpfkr"]
 
 [ext_resource type="Script" path="res://Scripts/LooseArea.gd" id="2_7onba"]
 [ext_resource type="Script" path="res://Scripts/ComboArea.gd" id="2_c2b64"]
 [ext_resource type="Script" path="res://Scripts/PlatformArea3D.gd" id="2_xxxkr"]
 [ext_resource type="ArrayMesh" uid="uid://b7idxpexiv5qo" path="res://Characters/Extras/FoodTray_Cube_001.res" id="3_wxt0x"]
-[ext_resource type="PackedScene" uid="uid://dmdfwycv1qpka" path="res://Meshes/Table/Table.glb" id="5_auq7w"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_kelqb"]
 points = PackedVector3Array(0.926237, 0.25, 0.926237, -0.956116, -0.25, -0.956116, -0.956116, -0.25, 0.956116, 0.956116, -0.25, -0.956116, -0.926237, 0.25, -0.926237, 0.956116, -0.25, 0.956116, -0.926237, 0.25, 0.926237, 0.926237, 0.25, -0.926237)
@@ -52,9 +51,6 @@ script = ExtResource("2_xxxkr")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="FoodTray/PlatfformArea"]
 transform = Transform3D(1.29304, 0, 0, 0, 0.376717, 0, 0, 0, 1, 0, 0.0329535, 0)
 shape = SubResource("ConvexPolygonShape3D_etc7c")
-
-[node name="Table2" parent="." instance=ExtResource("5_auq7w")]
-transform = Transform3D(-1.31134e-08, 0, 0.3, 0, 0.3, 0, -0.3, 0, -1.31134e-08, -0.705512, -1.01212, 15.5505)
 
 [connection signal="combo_event" from="ComboArea" to="FoodTray/PlatfformArea" method="_on_combo_area_combo_event"]
 [connection signal="landed_event" from="FoodTray/PlatfformArea" to="ComboArea" method="_on_platfform_area_landed_event"]
