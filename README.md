@@ -14,8 +14,8 @@ Learn about coding games in godot with GDScript and publishing on mobile with Go
 
 ## Current State 
 
-This is the first sprint and I got down the main functionality
+I finished the third sprint and I am in internal testing phase, next on the list is adding google play services such as a leaderboard
 
 ## Short Demo video
 
-https://youtu.be/JBLRlvjEx0k
+[https://youtu.be/JBLRlvjEx0k](https://www.youtube.com/shorts/loz8o0YPYlA)https://www.youtube.com/shorts/loz8o0YPYlA
