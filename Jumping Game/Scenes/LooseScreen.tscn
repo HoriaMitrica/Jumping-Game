@@ -46,12 +46,10 @@ text = "Try Again
 "
 vertical_icon_alignment = 0
 
-[node name="Quit" type="Button" parent="PanelContainer/BlackOverlay/VBoxContainer"]
+[node name="Button" type="Button" parent="PanelContainer/BlackOverlay/VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 3
 theme_override_font_sizes/font_size = 64
-text = "Quit
-"
+text = "Quit"
 
 [connection signal="pressed" from="PanelContainer/BlackOverlay/VBoxContainer/Try Again" to="." method="_on_try_again_pressed"]
-[connection signal="pressed" from="PanelContainer/BlackOverlay/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="PanelContainer/BlackOverlay/VBoxContainer/Button" to="." method="_on_quit_pressed"]

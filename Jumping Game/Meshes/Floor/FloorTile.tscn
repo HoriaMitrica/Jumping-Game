@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://bhrkxa72wik0h"]
+[gd_scene load_steps=3 format=3 uid="uid://bhrkxa72wik0h"]
 
 [ext_resource type="PackedScene" uid="uid://cnvh1l1bjpkok" path="res://Meshes/Floor/floor.tscn" id="1_vh2vs"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tgy04"]
+size = Vector3(1.37304, 1.36615, 1)
 
 [node name="Node3D" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
@@ -31,3 +34,10 @@ transform = Transform3D(1, 0, 0, 0, 0.991, 0, 0, 0, 1.01628, -91, 90.2, 0)
 
 [node name="Floor9" parent="." instance=ExtResource("1_vh2vs")]
 transform = Transform3D(1, 0, 0, 0, 0.991, 0, 0, 0, 1.01628, -91, -90.2, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(200, 0, 0, 0, 200, 0, 0, 0, 5, -0.0598793, -0.674365, -1.73576)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 1.13687e-13, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_tgy04")

@@ -63,6 +63,7 @@ func _on_try_again():
 	$CanvasLayer/LooseScreen.visible=false
 	get_tree().paused=false
 	get_tree().reload_current_scene()
+	
 func _on_quit():
 	get_tree().paused=false
 	get_tree().change_scene_to_file("res://Scenes/main_screen.tscn")
@@ -96,7 +97,6 @@ func _on_landed_event():
 	
 func _on_fall_event():
 	emit_signal("loose",Score)
-	get_tree().paused=true
 	$CanvasLayer/GameUI.visible=false
 	$CanvasLayer/LooseScreen.visible=true
 	pass

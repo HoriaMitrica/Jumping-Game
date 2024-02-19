@@ -28,7 +28,7 @@ transform = Transform3D(6.4251, 0, 0, 0, 1, 0, 0, 0, 5.2386, 0, 1.47501, 0)
 script = ExtResource("2_7onba")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="FallArea"]
-transform = Transform3D(6, 0, 0, 0, 2, 0, 0, 0, 6, -0.00361504, -4.21786, 0)
+transform = Transform3D(6, 0, 0, 0, 2, 0, 0, 0, 6, -0.00361504, -2.70494, 0)
 shape = SubResource("ConvexPolygonShape3D_etc7c")
 
 [node name="FoodTray" type="MeshInstance3D" parent="."]
