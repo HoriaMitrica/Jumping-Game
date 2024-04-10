@@ -18,10 +18,14 @@ func _on_sign_in_fail(errorCode:int):
 	print("failed  "+str(errorCode))
 	
 func _on_play_pressed():
-	if GPGS:
-		GPGS.signIn()
 	get_tree().change_scene_to_file("res://Scenes/Level.tscn")
-	
+		
 	
 func _on_setings_pressed():
 	get_tree().change_scene_to_packed(settings_scene)
+
+
+func _on_sign_in():
+	if GPGS:
+		GPGS.signIn();
+	pass # Replace with function body.

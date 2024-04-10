@@ -61,6 +61,12 @@ theme_override_constants/h_separation = 50
 theme_override_constants/v_separation = -200
 columns = 2
 
+[node name="Button" type="Button" parent="PanelContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 141
+text = "Sign in
+"
+
 [node name="Play" type="Button" parent="PanelContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -104,5 +110,6 @@ layout_mode = 2
 texture = ExtResource("7_3wj32")
 stretch_mode = 3
 
+[connection signal="button_down" from="PanelContainer/VBoxContainer/GridContainer/Button" to="." method="_on_sign_in"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/GridContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/GridContainer/Setings" to="." method="_on_setings_pressed"]
